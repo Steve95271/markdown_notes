@@ -158,3 +158,75 @@ echo "Due to $VIRUS virus company have lsot $9 milllion."
 echo "Due to $VIRUS virus company have lsot \$9 milllion."
 ```
 
+
+
+# Command Substitution
+
+Using output as input store in **variable**.
+
+Such as use "grep" command to filtering information and store into variable.
+
+```bash
+# Get the free memory via the command, and store in the variable FREERAN
+FREERAM=$(free -m | grep Mem | awk '{print $4}')
+```
+
+
+
+Instead of using the syntex **"VARIABLE=$(..some command will have output..)"** like this
+
+Also can use backtick, such as:
+
+```bash
+FREERAM=`free -m | grep Mem | awk '{print $4}'`
+```
+
+
+
+# Exporting Variables
+
+Variable create via terminal is temporary.
+
+If wanna store the variable, it can be done by adding the variable into
+
+​	**Global/All user:** /etc/profile
+
+​	**Current user:** /home/currentUser/.bashrc
+
+**NOTE:** The variables in current user's .bashrc will overwrite the variables in global file
+
+**Syntex:**
+
+​	export VariableName="VALUE"
+
+
+
+# User Input
+
+read command can take user input.
+
+Syntax:
+
+​	read VariableName
+
+​	**-p**, prompt, output the string PROMPT without a trailing newline before attempting to read
+
+​	**-s**, do not echo input coming from a terminal 
+
+```bash
+#!/bin/bash
+
+echo "Enter your skills:"
+read SKILL
+
+echo "Your $SKILL skill is in high Demand in the IT Industry."
+
+read -p 'Username: ' USR
+# using -sp, will print "Password", but your input will not be seen
+read -sp 'Password: ' pass
+
+echo
+
+echo "Login Successfull: Welcome USER $USR,"
+```
+

@@ -1,3 +1,5 @@
+
+
 # Add Script execution permission
 
 **When creating a .sh script file in Linux, it is necessary to add an execution permission.**
@@ -228,5 +230,52 @@ read -sp 'Password: ' pass
 echo
 
 echo "Login Successfull: Welcome USER $USR,"
+```
+
+
+
+# IF Else in Bash
+
+Syntax and example
+
+1. simple read input and if else
+
+```bash
+#!/bin/bash
+
+read -p "Enter a number: " NUM
+echo
+
+if [ $NUM -gt 100 ]
+then
+   echo "We have entered in IF block."
+   sleep 3
+   echo "Your Number is greater than 100"
+   echo
+   date
+else
+  echo "You have entered number less than 100."
+fi
+
+
+echo "Script execution completed successfully."
+```
+
+2. Identify network interfaces
+
+```bash
+#!/bin/bash
+
+value=$(ip addr show | grep -v LOOPBACK | grep -ic mtu)
+
+if [ $value -eq 1 ]
+then
+  echo "1 Active Network Interface found."
+elif [ $value -gt 1 ]
+then
+  echo "Found Multiple active Interface."
+else
+  echo "No Active interface found."
+fi
 ```
 
